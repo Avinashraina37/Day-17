@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+        }
+        #taskInput {
+            margin: 20px;
+        }
+        #tet {
+            margin: 50px;
+        }
+        li {
+            margin: 10px 0;
+            cursor: pointer;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        
+        }
+        #time{
+            margin: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <input id="taskInput" type="text" placeholder="ENTER YOUR TEXT HERE">
+
+    <input id="time"    type="time" >
+
+    <button onclick="addtask()" id="btn">ADD</button>
+    
+   
+    
+    <h1 id="tet">TODO LIST:-</h1>
+    <ul id="tasklist"></ul>
+
+    <script>
+        function addtask() {
+            let task = document.getElementById("taskInput").value;
+            let time = document.getElementById("time").value;
+
+
+            
+            if (!task || !time) return;
+
+        
+            let li = document.createElement("li");
+
+            li.textContent = `${task} - ${time}`;
+
+            
+            li.addEventListener("click", function() {
+                li.classList.toggle("completed");
+            });
+
+        
+            li.addEventListener("dblclick", function() {
+                li.remove();
+            });
+
+        
+            document.getElementById("tasklist").appendChild(li);
+
+            document.getElementById("taskInput").value = "";
+            document.getElementById("time").value = "";
+        }
+    </script>
+</body>
+</html>
